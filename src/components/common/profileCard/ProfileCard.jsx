@@ -56,7 +56,7 @@ const ProfileCard = ({ currentUser, onEdit }) => {
     if (location?.state?.email) {
       getSingleUser(setCurrentProfile, location?.state?.email);
     }
-  }, []);
+  }, [location?.state?.id, location?.state?.email]);
 
   return (
     <>
@@ -84,7 +84,7 @@ const ProfileCard = ({ currentUser, onEdit }) => {
                 ? currentUser?.coverLink
                 : currentProfile?.coverLink
             }
-            alt="background image"
+            alt="background"
             onClick={() => setCoverModalOpen(true)}
           />
         </div>
@@ -95,7 +95,7 @@ const ProfileCard = ({ currentUser, onEdit }) => {
                 ? currentUser?.profileLink
                 : currentProfile?.profileLink
             }
-            alt="background image"
+            alt="background"
             onClick={() => setModalOpen(true)}
           />
 

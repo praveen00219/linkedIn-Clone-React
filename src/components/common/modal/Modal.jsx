@@ -4,7 +4,6 @@ import "./style.scss";
 import { ImageGalleryIcon } from "../topbar/SVGstorage";
 import { Progress } from "antd";
 
-
 const ModalCtx = ({
   modalOpen,
   setModalOpen,
@@ -72,7 +71,7 @@ const ModalCtx = ({
           <>
             <img
               src={postImage || currentPost?.postImage}
-              alt="post Image"
+              alt="post"
               className="postImage"
             />
             <span className="crossImage" onClick={() => setPosttImage("")}>

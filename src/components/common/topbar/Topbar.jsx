@@ -46,8 +46,8 @@ const Topbar = ({ currentUser }) => {
 
   //todo: applying debouncing here
   useEffect(() => {
-    handleSearch();
-  }, [searchInput]);
+    handleSearch(); // eslint-disable-next-line
+  }, [searchInput]); // eslint-disable-next-line
 
   //todo: set users from firestore
   useEffect(() => {

@@ -27,12 +27,10 @@ const PostCard = ({ posts, getEditData }) => {
   }, []);
 
   useEffect(() => {
-    getConnections( currentUser?.id,posts.userID, setIsConnected);
-  }, [ currentUser?.id,posts.userID]);
+    getConnections(currentUser?.id, posts.userID, setIsConnected);
+  }, [currentUser?.id, posts.userID]);
 
-
-  return  isConnected || currentUser?.id === posts.userID ? (
-    
+  return isConnected || currentUser?.id === posts.userID ? (
     <div className="postCard">
       <div className="post_user_profile">
         <img
@@ -58,9 +56,13 @@ const PostCard = ({ posts, getEditData }) => {
             {" "}
             {allUsers.filter((user) => user.id === posts?.userID)[0]?.name}
           </p>
-          <p className="headline">{allUsers
-              .filter((item) => item.id === posts.userID)
-              .map((item) => item.headline)[0]}</p>
+          <p className="headline">
+            {
+              allUsers
+                .filter((item) => item.id === posts.userID)
+                .map((item) => item.headline)[0]
+            }
+          </p>
           <p className="timeline">{posts.timeStamp}</p>
         </div>
       </div>
@@ -78,15 +80,10 @@ const PostCard = ({ posts, getEditData }) => {
       ) : (
         <p className="postStatus">{posts.status}</p>
       )}
-      {
-        posts.postImage ? (
-          <img src={posts.postImage} alt="post Image" className="postImage" />
-        ) : (
-          null
-        )
-      }
-      
-        
+      {posts.postImage ? (
+        <img src={posts.postImage} alt="post" className="postImage" />
+      ) : null}
+
       <LikeButton
         userId={currentUser?.id}
         currentUser={currentUser}
@@ -107,7 +104,9 @@ const PostCard = ({ posts, getEditData }) => {
         <></>
       )}
     </div>
-  ) : (<></>);
+  ) : (
+    <></>
+  );
 };
 
 export default PostCard;
