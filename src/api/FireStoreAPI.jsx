@@ -32,7 +32,6 @@ export const postStatus = (object) => {
 };
 //todo: get post from firestore
 export const getStatus = (setAllStatus) => {
-  // const q = query(postsRef, orderBy("timeStamp"));
   onSnapshot(postsRef, (response) => {
     setAllStatus(
       response.docs.map((docs) => {
@@ -91,7 +90,6 @@ export const getSingleUser = (setCurrentUser, email) => {
   });
 };
 
-
 //todo: get corresponding posts from firestore
 export const getSingleStatus = (setAllStatus, id) => {
   const singlePostQuery = query(postsRef, where("userID", "==", id));
@@ -104,9 +102,9 @@ export const getSingleStatus = (setAllStatus, id) => {
   });
 };
 
-//todo: Like post functionality 
+//todo: Like post functionality
 export const likePost = (userId, postId, liked) => {
-   try {
+  try {
     let docToLike = doc(likeRef, `${userId}_${postId}`);
     if (liked) {
       deleteDoc(docToLike);
@@ -118,7 +116,7 @@ export const likePost = (userId, postId, liked) => {
   }
 };
 
-//todo: get likes from user 
+//todo: get likes from user
 export const getLikesByUser = (userId, postId, setLiked, setLikesCount) => {
   try {
     let likeQuery = query(likeRef, where("postId", "==", postId));
@@ -181,7 +179,7 @@ export const getAllUsers = (setAllUsers) => {
     );
   });
 };
- 
+
 //todo: update the posted post
 export const updatePost = (id, status, postImage) => {
   let docToUpdate = doc(postsRef, id);

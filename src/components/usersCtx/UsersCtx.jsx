@@ -1,18 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import ProfileCard from "../common/profileCard/ProfileCard";
-import ProfileEdit from "../common/profileEdit/ProfileEdit";
-import '../profileCtx/style.scss'
+import "../profileCtx/style.scss";
 
-
-const UsersCtx = ({currentUser}) => {
-
+const UsersCtx = ({ currentUser }) => {
   return (
     <div className="profileCtx">
-        
-        <ProfileCard currentUser={currentUser} />
-      
+      <ProfileCard currentUser={currentUser} />
     </div>
-  )
-}
+  );
+};
 
-export default UsersCtx
+export default UsersCtx;

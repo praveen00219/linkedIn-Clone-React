@@ -174,7 +174,7 @@ const Topbar = ({ currentUser }) => {
                       setSearchInput("");
                     }}
                   >
-                    <img src={user.profileLink} />
+                    <img src={user.profileLink} alt="img" />
                     <p className="name">{user.name}</p>
                   </div>
                 ))

@@ -13,15 +13,15 @@ import OtherUsers from "../pages/otherUsers/OtherUsers";
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <Login/>,
+    element: <Login />,
   },
   {
     path: "/register",
-    element: <Register/>,
+    element: <Register />,
   },
   {
-    path: '/',
-    element: <Layout/>,
+    path: "/",
+    element: <Layout />,
     children: [
       {
         path: "/home",
@@ -41,17 +41,16 @@ export const router = createBrowserRouter([
       },
       {
         path: "/profile",
-        element: <Profile/>
+        element: <Profile />,
       },
       {
         path: "/profile/:name",
-        element: <OtherUsers/>
+        element: <OtherUsers />,
       },
       {
         path: "/news",
-        element: <News/>
-      }
-    ]
-  }
-  
+        element: <News />,
+      },
+    ],
+  },
 ]);

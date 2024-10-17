@@ -1,38 +1,40 @@
-import React, { useMemo, useState, useEffect } from "react";
+import React, { useMemo, useState } from "react";
 import "../postCard/style.scss";
-import { likePost, getLikesByUser, postComment, getComments } from "../../../api/FireStoreAPI";
-import InputEmoji from 'react-input-emoji';
-import GetTime from '../postUpdate/GetTime'
+import {
+  likePost,
+  getLikesByUser,
+  postComment,
+  getComments,
+} from "../../../api/FireStoreAPI";
+import InputEmoji from "react-input-emoji";
+import GetTime from "../postUpdate/GetTime";
 import { nanoid } from "nanoid";
 import { toast } from "react-toastify";
 
-
-
-const LikeButton = ({ userId, postId,currentUser }) => {
+const LikeButton = ({ userId, postId, currentUser }) => {
   const [likesCount, setLikesCount] = useState(0);
   const [showCommentBox, setShowCommentBox] = useState(false);
   const [liked, setLiked] = useState(false);
   const [comments, setComments] = useState([]);
-  const[text, setText] = useState('')
+  const [text, setText] = useState("");
   //todo: sending data to firestoreAPI on like click
   const handleClick = () => {
     likePost(userId, postId, liked);
   };
 
   //todo: show and hide commentbox
-  const hideComment = () =>{
-    setShowCommentBox(!showCommentBox)
-  }
+  const hideComment = () => {
+    setShowCommentBox(!showCommentBox);
+  };
 
   const addComment = () => {
-    if(text === ""){
-      toast('Could not add the Comment');
-      return
+    if (text === "") {
+      toast("Could not add the Comment");
+      return;
     }
     postComment(postId, text, GetTime("LLL"), currentUser?.name);
     setText("");
   };
-
 
   useMemo(() => {
     getLikesByUser(userId, postId, setLiked, setLikesCount);
@@ -69,16 +71,16 @@ const LikeButton = ({ userId, postId,currentUser }) => {
       {showCommentBox ? (
         <div className="user_comment_box">
           <InputEmoji
-          value={text}
-          onChange={setText}
-          cleanOnEnter
-          shouldReturn={true}
-          onEnter={addComment}
-          placeholder="Add Comment ..."
-          name = "comment"
-        />
-         <button className="add-comment-btn" onClick={addComment}>
-            Add 
+            value={text}
+            onChange={setText}
+            cleanOnEnter
+            shouldReturn={true}
+            onEnter={addComment}
+            placeholder="Add Comment ..."
+            name="comment"
+          />
+          <button className="add-comment-btn" onClick={addComment}>
+            Add
           </button>
 
           {comments.length > 0 ? (
@@ -88,9 +90,6 @@ const LikeButton = ({ userId, postId,currentUser }) => {
                   <p className="name">{comment.name}</p>
                   <p className="timestamp">{comment.timeStamp}</p>
                   <p className="comment">{comment.comment}</p>
-
-                  
-                  
                 </div>
               );
             })

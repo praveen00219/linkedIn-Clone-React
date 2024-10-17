@@ -1,49 +1,50 @@
-import React, {useState, useRef} from 'react'
-import './LoginCtx.scss'
-import { LoginAPI, GoogleSignInAPI } from '../../api/AuthApi';
-import logo from '../../assets/logo.svg'
-import lottie from '../../assets/loginLoto.svg'
+import React, { useState, useRef } from "react";
+import "./LoginCtx.scss";
+import { LoginAPI } from "../../api/AuthApi";
+import logo from "../../assets/logo.svg";
+import lottie from "../../assets/loginLoto.svg";
 import { useNavigate, Link } from "react-router-dom";
-import { toast } from 'react-toastify';
-import Home from '../../pages/home/Home';
+import { toast } from "react-toastify";
 
 const LoginCtx = () => {
-
   let navigate = useNavigate();
   const [credentails, setCredentials] = useState({});
   const emailInputRef = useRef(null);
   const passwordInputRef = useRef(null);
 
   //todo: to handle  page after sign in successfull
-  const login = async(e) =>{
+  const login = async (e) => {
     e.preventDefault();
-    try{
+    try {
       let res = await LoginAPI(credentails.email, credentails.password);
-      toast.success('Sign In to Linkedin');
+      toast.success("Sign In to Linkedin");
       localStorage.setItem("userEmail", res.user.email);
-      navigate('/home')
-    }catch(err){
+      navigate("/home");
+    } catch (err) {
       toast.error("Please Check your Log in Credentials");
     }
-  }
-
+  };
 
   //todo: focus input fields if empty
-  const focusInputFields = () =>{
+  const focusInputFields = () => {
     if (emailInputRef.current) {
       emailInputRef.current.focus();
     }
-  }
+  };
 
   return (
-    <div className='LoginPage'>
+    <div className="LoginPage">
       <header>
         <nav>
-            <img src={logo} alt="Linked in Logo" />
-            <div className="login_butns">
-            <Link to='/register'><button>Join Now</button></Link>
-              <button className='signIn' onClick={ focusInputFields }>Sign in</button>
-            </div>
+          <img src={logo} alt="Linked in Logo" />
+          <div className="login_butns">
+            <Link to="/register">
+              <button>Join Now</button>
+            </Link>
+            <button className="signIn" onClick={focusInputFields}>
+              Sign in
+            </button>
+          </div>
         </nav>
       </header>
       {/* main started  */}
@@ -54,31 +55,38 @@ const LoginCtx = () => {
           <form action="">
             <div className="form_field email">
               <label>Email ID</label>
-              <input 
-                type="email" 
-                placeholder='Enter you email here ...'
-                onChange={(e) => setCredentials({...credentails, email: e.target.value})}
+              <input
+                type="email"
+                placeholder="Enter you email here ..."
+                onChange={(e) =>
+                  setCredentials({ ...credentails, email: e.target.value })
+                }
                 ref={emailInputRef}
                 required
               />
             </div>
             <div className="form_field password">
               <label>Password</label>
-              <input 
+              <input
                 type="password"
-                placeholder='Enter password here...'
-                onChange={(e) => setCredentials({...credentails, password: e.target.value})}
+                placeholder="Enter password here..."
+                onChange={(e) =>
+                  setCredentials({ ...credentails, password: e.target.value })
+                }
                 ref={passwordInputRef}
                 required
               />
             </div>
-            <button onClick={login} className="signIn">Sign In</button>
+            <button onClick={login} className="signIn">
+              Sign In
+            </button>
           </form>
           <hr className="hr-text gradient" data-content="OR" />
           <div className="option_btns">
-            <button>New to Linked in? <Link to='/register'>Join Now</Link></button>
+            <button>
+              New to Linked in? <Link to="/register">Join Now</Link>
+            </button>
           </div>
-
         </div>
         {/* lottie area  startesd here... */}
         <div className="lottie_area">
@@ -86,7 +94,7 @@ const LoginCtx = () => {
         </div>
       </main>
     </div>
-  )
-}
+  );
+};
 
-export default LoginCtx
+export default LoginCtx;

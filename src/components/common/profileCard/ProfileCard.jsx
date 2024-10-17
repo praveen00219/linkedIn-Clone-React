@@ -1,7 +1,5 @@
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useMemo } from "react";
 import "./style.scss";
-import background from "../../../assets/background.jpg";
-import avatar from "../../../assets/avatar.png";
 import skill from "../../../assets/skill.png";
 import PostCard from "../postCard/PostCard";
 import { getSingleUser, getSingleStatus } from "../../../api/FireStoreAPI";
@@ -89,8 +87,6 @@ const ProfileCard = ({ currentUser, onEdit }) => {
             alt="background image"
             onClick={() => setCoverModalOpen(true)}
           />
-
-          
         </div>
         <div className="content">
           <img
@@ -160,7 +156,11 @@ const ProfileCard = ({ currentUser, onEdit }) => {
         <div className="heading">
           <h2>About</h2>
         </div>
-        {currentProfile?.email === undefined ? <i className="fa-regular fa-pen-to-square" onClick={onEdit}></i> : <></>}
+        {currentProfile?.email === undefined ? (
+          <i className="fa-regular fa-pen-to-square" onClick={onEdit}></i>
+        ) : (
+          <></>
+        )}
         <p>
           {Object.values(currentProfile).length === 0
             ? currentUser?.about
@@ -171,7 +171,11 @@ const ProfileCard = ({ currentUser, onEdit }) => {
         <div className="heading">
           <h2>Skills</h2>
         </div>
-        {currentProfile?.email === undefined ? <i className="fa-regular fa-pen-to-square" onClick={onEdit}></i> : <></>}
+        {currentProfile?.email === undefined ? (
+          <i className="fa-regular fa-pen-to-square" onClick={onEdit}></i>
+        ) : (
+          <></>
+        )}
         <div className="single_skill">
           <img src={skill} alt="skill" />
           <p>

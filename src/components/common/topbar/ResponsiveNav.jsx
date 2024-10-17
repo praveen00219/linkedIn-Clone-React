@@ -1,16 +1,13 @@
 import React from "react";
-import './style2.scss';
+import "./style2.scss";
 import {
-    LinkedinLogo,
-    NotificationIcon,
-    QuotesIcon,
-    JobsIcon,
-    NetworkIcon,
-    HomeIcon,
-    SearchIcon
-  } from "./SVGstorage";
-  import { Link } from "react-router-dom";
-
+  NotificationIcon,
+  QuotesIcon,
+  JobsIcon,
+  NetworkIcon,
+  HomeIcon,
+} from "./SVGstorage";
+import { Link } from "react-router-dom";
 
 const ResponsiveNav = () => {
   return (
@@ -48,7 +45,7 @@ const ResponsiveNav = () => {
         </Link>
       </li>
       <li>
-        <Link to='/news'>
+        <Link to="/news">
           <div className="notification icon">
             <NotificationIcon />
             <p>News</p>

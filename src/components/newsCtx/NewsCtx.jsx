@@ -1,19 +1,17 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { nanoid } from "nanoid";
 import "./style.scss";
 import Loader from "../common/Loader/Loader";
-import News from "./News.json"
+import News from "./News.json";
 
 const NewsCtx = () => {
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(()=>{
+  useEffect(() => {
     setNews([...News]);
     setLoading(false);
-
-  },[])
+  }, []);
 
   // async function getNews() {
   //   try {

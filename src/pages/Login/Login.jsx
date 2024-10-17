@@ -17,7 +17,7 @@ const Login = () => {
         setLoading(false);
       }
     });
-  }, []);
+  }, [navigate]);
 
   return loading ? <Loader /> : <LoginCtx />;
 };

@@ -1,10 +1,8 @@
-import React from 'react';
-import RegisterCtx from '../../components/registerCtx/RegisterCtx';
+import React from "react";
+import RegisterCtx from "../../components/registerCtx/RegisterCtx";
 
 const Register = () => {
-  return (
-    <RegisterCtx/>
-  )
-}
+  return <RegisterCtx />;
+};
 
-export default Register
+export default Register;
