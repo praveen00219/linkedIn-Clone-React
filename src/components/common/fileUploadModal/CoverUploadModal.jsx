@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button, Modal, Progress } from "antd";
 import "./style.scss";
 
@@ -8,7 +8,7 @@ const CoverUploadModal = ({
   getCoverImage,
   uploadCoverImage,
   coverPhoto,
-  progress
+  progress,
 }) => {
   return (
     <div>
@@ -29,7 +29,7 @@ const CoverUploadModal = ({
           </Button>,
         ]}
       >
-         {progress === 0 ? <></> : <Progress percent={progress} />}
+        {progress === 0 ? <></> : <Progress percent={progress} />}
         <div className="chooseCover">
           <label className="file">Upload Cover Photo </label>
           <input

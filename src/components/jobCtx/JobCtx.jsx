@@ -17,8 +17,8 @@ const JobCtx = () => {
       setJobs(res.data.results);
       setLoading(false);
     } catch (err) {
-        alert('refresh and try again');
-        setLoading(false);
+      alert("refresh and try again");
+      setLoading(false);
     }
   }
 
@@ -61,7 +61,11 @@ const JobCtx = () => {
                     {item.levels[0]?.name}
                   </p>
                 </div>
-                <a href={item.refs.landing_page} target="_blank">
+                <a
+                  href={item.refs.landing_page}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <button>
                     Easy Apply <i class="fa-solid fa-location-arrow"></i>
                   </button>

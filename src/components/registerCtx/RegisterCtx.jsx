@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 import "./style.scss";
-import { RegisterAPI, GoogleSignInAPI } from "../../api/AuthApi";
+import { RegisterAPI } from "../../api/AuthApi"; // if you want registrate with google , then import here : GoogleSignInAPI
 import logo from "../../assets/logo.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import { postUserData } from "../../api/FireStoreAPI";
-import { nanoid } from 'nanoid';
-
-
+import { nanoid } from "nanoid";
 
 const RegisterCtx = () => {
   const [credentails, setCredentials] = useState({});
@@ -24,9 +22,11 @@ const RegisterCtx = () => {
         userID: nanoid(),
         name: credentails.name,
         email: credentails.email,
-        profileLink: 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQIwGY3_exadhuefOpbrSS3dmvdXtSeX-M5fO5tnFieVmc4J6Ly',
-        coverLink: 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRbpjWJDoS2D95VCC3QKff-ii6wVLXncvHLE8IIkisXKQITxIUw'
-      })
+        profileLink:
+          "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQIwGY3_exadhuefOpbrSS3dmvdXtSeX-M5fO5tnFieVmc4J6Ly",
+        coverLink:
+          "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRbpjWJDoS2D95VCC3QKff-ii6wVLXncvHLE8IIkisXKQITxIUw",
+      });
       localStorage.setItem("userEmail", res.user.email);
       navigate("/home");
     } catch (err) {
@@ -34,10 +34,10 @@ const RegisterCtx = () => {
     }
   };
   //todo:  for google sign in
-  const googleSignIn = () => {
-    GoogleSignInAPI();
-    navigate("/home");
-  };
+  // const googleSignIn = () => {
+  //   GoogleSignInAPI();
+  //   navigate("/home");
+  // };
 
   return (
     <div className="joinNow_page">
@@ -90,6 +90,8 @@ const RegisterCtx = () => {
             </div>
             <button onClick={registerUser}>Join Now</button>
           </form>
+          {/* <hr className="hr-text gradient" data-content="OR" />
+          <button onClick={googleSignIn}>signIn With Google</button> */}
           <hr className="hr-text gradient" data-content="OR" />
           <p className="signInText">
             Already on LinkedIn? <Link to="/">Sign in</Link>

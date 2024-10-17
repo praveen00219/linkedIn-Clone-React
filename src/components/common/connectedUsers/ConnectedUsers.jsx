@@ -32,7 +32,7 @@ const ConnectedUsers = ({ user, getCurrentUser, currentUser }) => {
         />
       </div>
       <div className="conact_content">
-        <img src={user.profileLink} alt="user's profile image" />
+        <img src={user.profileLink} alt={`${user.name}'s avatar`} />
         <div className="names">
           <h4 onClick={() => openUser(user)}>{user.name}</h4>
           <p>{user.headline}</p>
